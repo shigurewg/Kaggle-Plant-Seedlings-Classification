@@ -39,7 +39,7 @@ def train():
         print('-' * len(f'Epoch: {epoch + 1}/{num_epochs}'))
 
         training_loss = 0.0
-        training_corrects = 0
+        training_corrects = 0.0
 
         for i, (inputs, labels) in enumerate(data_loader):
             inputs = Variable(inputs.cuda(CUDA_DEVICES))
@@ -54,14 +54,13 @@ def train():
             loss.backward()
             optimizer.step()
 
-            training_loss += loss.data[0] * inputs.size(0)
+            training_loss += loss.data * inputs.size(0)
             training_corrects += torch.sum(preds == labels.data)
 
         training_loss = training_loss / len(train_set)
-        training_acc = training_corrects / len(train_set)
-
+        training_acc = training_corrects.item() / len(train_set)
         print(f'Training loss: {training_loss:.4f}\taccuracy: {training_acc:.4f}\n')
-
+        print(f'Training cors: {training_corrects:.4f}\n',type(training_acc),type(training_corrects),type(len(train_set)))
         if training_acc > best_acc:
             best_acc = training_acc
             best_model_params = copy.deepcopy(model.state_dict())

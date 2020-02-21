@@ -2,8 +2,7 @@
 
 Copy and modify from "Kaggle-Plant-Seedlings-Classification-Example"
 
-## GitHub Repository
-
+Repository:
 https://github.com/remorsecs/Kaggle-Plant-Seedlings-Classification-Example
 
 

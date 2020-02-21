@@ -30,10 +30,10 @@ def train():
 
     best_model_params = copy.deepcopy(model.state_dict())
     best_acc = 0.0
-    num_epochs = 50
+    num_epochs = 100
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.SGD(params=model.parameters(), lr=0.001, momentum=0.9)
-
+    fp = open("out.txt","w")
     for epoch in range(num_epochs):
         print(f'Epoch: {epoch + 1}/{num_epochs}')
         print('-' * len(f'Epoch: {epoch + 1}/{num_epochs}'))
@@ -61,13 +61,14 @@ def train():
         training_acc = training_corrects.item() / len(train_set)
         print(f'Training loss: {training_loss:.4f}\taccuracy: {training_acc:.4f}\n')
         print(f'Training cors: {training_corrects:.4f}\n',type(training_acc),type(training_corrects),type(len(train_set)))
+        fp.write(f'{training_loss:.4f} {training_acc:.4f}\n')
         if training_acc > best_acc:
             best_acc = training_acc
             best_model_params = copy.deepcopy(model.state_dict())
 
     model.load_state_dict(best_model_params)
     torch.save(model, f'model-{best_acc:.02f}-best_train_acc.pth')
-
+    fp.close()
 
 if __name__ == '__main__':
     train()

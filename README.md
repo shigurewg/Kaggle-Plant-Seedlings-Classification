@@ -1,4 +1,13 @@
-# Kaggle-Plant-Seedlings-Classification-Example
+# Kaggle-Plant-Seedlings-Classification
+
+Copy and modify from "Kaggle-Plant-Seedlings-Classification-Example"
+
+## GitHub Repository
+
+https://github.com/remorsecs/Kaggle-Plant-Seedlings-Classification-Example
+
+
+## Kaggle-Plant-Seedlings-Classification-Example
 
 Just for ML course.
 
@@ -17,7 +26,6 @@ The others:
 ```bash
 pip install -r requirements.txt
 ```
-
 ## GitHub Repository
 
 https://github.com/remorsecs/Kaggle-Plant-Seedlings-Classification-Example
